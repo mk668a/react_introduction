@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Hello World</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js">
+  </script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.productio
+n.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js"></script>
+</head>
+
+<body>
+  <div id="titl">
+    <script type="text/babel">
+      ReactDOM.render(
+        <h1>Hello World</h1>,
+        document.getElementById('titl')
+      );
+    </script>
+  </div>
+
+  <div id="main">
+    <script type="text/babel">
+      class MyComponent extends React.Component {
+
+      constructor(props, context, updater) {
+        super(props, context, updater);
+        this.state = {
+          count: 0
+        };
+      }
+
+      render() {
+        return [
+          React.createElement(
+            'input', {
+              type: 'text',
+              onChange: (e) => this.setState({
+                count: e.target.value.length
+              })
+            }
+          ),
+          React.createElement('span', null, this.state.count),
+        ]
+      }
+
+      componentDidMount() {
+        console.log('mounted');
+      }
+      componentWillUpdate(nextProps, nextState) {
+        console.log('update');
+        console.log(nextProps);
+        console.log(nextState);
+      }
+
+    }
+
+    ReactDOM.render(
+      React.createElement(MyComponent),
+      document.getElementById('main')
+    );
+  </script>
+  </div>
+
+  <div id="jsx">
+    <script type="text/babel">
+      class MyComponent extends React.Component{
+        render() {
+          return (
+            <h2>{this.props.val1 + this.props.val2}</h2>
+          );
+        }
+      };
+
+      ReactDOM.render(
+        <MyComponent val1='example ' val2='jsx' />,
+        document.getElementById('jsx')
+      );
+    </script>
+  </div>
+</body>
+
+</html>
